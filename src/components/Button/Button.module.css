@@ -1,31 +1,13 @@
-.todo-item {
-    padding: 7px 10px;
-    background-color: #f1f1f1;
-    margin-top: 15px;
-    font-size: 16px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.user-ctrl {
-    display: flex;
-    align-items: center;
-}
-
 .btn {
     outline: none;
-    background: rgb(81, 81, 234);
+    background: transparent;
     border: 0;
     padding: 8px 15px;
     color: white;
     font-size: 14px;
     font-weight: 600;
     border-radius: 10px;
-    margin: 0 10px;
     cursor: pointer;
-
     transition: all 0.2s ease-out;
 }
 
