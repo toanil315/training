@@ -1,0 +1,14 @@
+.title {
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 40px;
+    background-color: #DEF0D6;
+}
+
+.content {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0 20px;
+}

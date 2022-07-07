@@ -1,0 +1,50 @@
+.create-todo {
+    width: 30%;
+}
+
+.create-todo h2 {
+    margin-bottom: 20px;
+    padding: 8px 0;
+}
+
+.create-todo input {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.create-todo input:focus {
+    outline: none;
+}
+
+.btn {
+    outline: none;
+    background: transparent;
+    border: 0;
+    padding: 8px 15px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+
+    transition: all 0.2s ease-out;
+}
+
+.btn.red {
+    background-color: rgb(206, 46, 46);
+}
+
+.btn.red:hover {
+    background-color: rgb(177, 34, 34);
+}
+
+.btn.green {
+    background-color: rgb(25, 169, 25);
+}
+
+.btn.green:hover {
+    background-color: rgb(21, 127, 21);
+}

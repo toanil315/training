@@ -1,0 +1,9 @@
+.todo-list {
+    width: 62%;
+}
+
+.todo-list h2 {
+    background-color: rgb(147, 213, 213);
+    text-align: center;
+    padding: 8px;
+}

@@ -1,0 +1,51 @@
+.todo-item {
+    padding: 7px 10px;
+    background-color: #f1f1f1;
+    margin-top: 15px;
+    font-size: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-ctrl {
+    display: flex;
+    align-items: center;
+}
+
+.btn {
+    outline: none;
+    background: transparent;
+    border: 0;
+    padding: 8px 15px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+    margin: 0 10px;
+    cursor: pointer;
+
+    transition: all 0.2s ease-out;
+}
+
+.btn.red {
+    background-color: rgb(206, 46, 46);
+}
+
+.btn.red:hover {
+    background-color: rgb(177, 34, 34);
+}
+
+.btn.green {
+    background-color: rgb(25, 169, 25);
+}
+
+.btn.green:hover {
+    background-color: rgb(21, 127, 21);
+}
+
+.btn:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed;
+}
