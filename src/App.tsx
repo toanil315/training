@@ -315,7 +315,8 @@ function App() {
       <Table
         columns={columns}
         items={stockItems}
-        pageSize={10}
+        pageSize={8}
+        paginationPosition={'center'}
       />
     </div>
   );
