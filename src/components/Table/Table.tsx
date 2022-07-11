@@ -31,6 +31,8 @@ interface Column<T extends {}> {
 interface TableProps<T extends {}> {
   items: T[];
   columns: Column<T>[];
+  pageSize?: number;
+  paginationPosition?: 'left' | 'right' | 'center'
 }
 
 export default function Table<T extends {}>(props: TableProps<T>) {
@@ -43,25 +45,35 @@ export default function Table<T extends {}>(props: TableProps<T>) {
     orderSort: 0, // 0: list origin, 1: ascending, 2: descending
   });
   const originListRef = useRef<T[]>([]);
+  const positionRef  = useRef({
+    left: 'start',
+    right: 'end',
+    center: 'center'
+  })
+  const [activePage, setActivePage] = useState<number>(1)
+  const [itemsListDisplay, setItemsListDisplay] = useState<T[]>([])
+  
 
   useEffect(() => {
-    console.log('render')
     originListRef.current = JSON.parse(JSON.stringify(props.items));
   }, []);
 
-  console.log(originListRef.current);
+  useEffect(() => {
+    const pageSize = props.pageSize ? props.pageSize : 20
+    setItemsListDisplay(itemList.slice((activePage  - 1) * pageSize, activePage * pageSize))
+  }, [itemList, activePage])
 
   const sortList = (sortKey: string, sortFn: (a: T, b: T) => number) => {
     if (sortKey === sortInfo.sortKey) {
       // If thead's sortKey === sortInfo.sortKey => continue next step
       switch (sortInfo.orderSort) {
         case 0: {
-          setItemList(itemList.sort(sortFn));
+          setItemList([...itemList.sort(sortFn)]);
           setsortInfo({ ...sortInfo, orderSort: 1 });
           break;
         }
         case 1: {
-          setItemList(itemList.reverse());
+          setItemList([...itemList.reverse()]);
           setsortInfo({ ...sortInfo, orderSort: 2 });
           break;
         }
@@ -73,10 +85,12 @@ export default function Table<T extends {}>(props: TableProps<T>) {
       }
     } else {
       // => new sortKey and back to start
-      setItemList(itemList.sort(sortFn));
+      setItemList([...itemList.sort(sortFn)]);
       setsortInfo({ sortKey, orderSort: 1 });
     }
   };
+
+  console.log(itemList)
 
   function renderRow(item: T, columns: Column<T>[]): ReactNode {
     return (
@@ -153,14 +167,29 @@ export default function Table<T extends {}>(props: TableProps<T>) {
     });
   }
 
+  function renderPagination(amountOfItems: number, pageSize: number, paginationPosition?: string) : React.ReactNode {
+    const amountPage = Math.floor(amountOfItems / pageSize) + 1
+
+    return <div style={{width: '100%' ,marginLeft: -10, marginTop: 10, display: 'flex', justifyContent: paginationPosition ? paginationPosition : 'right', marginBottom: 20}}>
+      {
+        Array(amountPage).fill(1).map((page, index) => {
+          return <div onClick={() => {setActivePage(index + 1)}} className={`pagination-item ${activePage === index + 1 ? 'active' : ''}`}>{index + 1}</div>
+        })
+      }
+    </div>
+  }
+
   return (
-    <table border={0}>
-      <thead>{renderHeader(props.columns)}</thead>
-      <tbody>
-        {itemList.map((item: T) => {
-          return renderRow(item, props.columns);
-        })}
-      </tbody>
-    </table>
+    <>
+      <table border={0}>
+        <thead>{renderHeader(props.columns)}</thead>
+        <tbody>
+          {itemsListDisplay.map((item: T) => {
+            return renderRow(item, props.columns);
+          })}
+        </tbody>
+      </table>
+      {renderPagination(itemList.length, props.pageSize ? props.pageSize : 20, props.paginationPosition)}
+    </>
   );
 }

@@ -21,3 +21,23 @@ th {
 td {
   border-bottom: 1px solid rgb(241, 241, 241);
 }
+
+.pagination-item {
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgb(207, 207, 207);
+  margin-left: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.pagination-item.active {
+  color: rgb(98, 98, 227);
+  border-color: rgb(98, 98, 227);
+}

@@ -50,7 +50,227 @@ const stockItems: StockItem[] = [
       width: 100,
       height: 50
     }
-  }
+  },
+  {
+    id: 4,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 5,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 6,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 7,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 8,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 9,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 10,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 11,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 12,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 13,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 14,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 15,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 16,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 17,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 18,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 19,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 20,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 21,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 22,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
+  {
+    id: 23,
+    name: "Scissors",
+    count: 2,
+    image: {
+      url:
+        "https://user-images.githubusercontent.com/14864439/101538129-68fb6a80-397b-11eb-8250-e622fdf0f34c.png",
+      width: 100,
+      height: 50
+    }
+  },
 ];
 
 function App() {
@@ -95,6 +315,7 @@ function App() {
       <Table
         columns={columns}
         items={stockItems}
+        pageSize={10}
       />
     </div>
   );
