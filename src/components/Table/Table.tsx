@@ -3,7 +3,7 @@ import Header from "./Header";
 import PaginationList from "./PaginationList";
 import Row from "./Row";
 import "./Table.css";
-import { TableProps, Column } from "./type";
+import { TableProps, Column, MinTableItem } from "./type";
 
 export default function Table<T extends {}>(props: TableProps<T>) {
   const [itemList, setItemList] = useState<T[]>(props.items);
@@ -72,7 +72,11 @@ export default function Table<T extends {}>(props: TableProps<T>) {
   return (
     <>
       <table border={0}>
-        <thead>{renderHeaders(props.columns)}</thead>
+        <thead>
+          <tr>
+            {renderHeaders(props.columns)}
+          </tr>
+        </thead>
         <tbody>
           {itemsListDisplay.map((item: T) => {
             return <Row item={item} columns={props.columns} />;
@@ -82,7 +86,9 @@ export default function Table<T extends {}>(props: TableProps<T>) {
       <PaginationList
         amountOfItems={itemList.length}
         pageSize={props.pageSize ? props.pageSize : 20}
-        paginationPosition={props.paginationPosition ? props.paginationPosition : 'right'}
+        paginationPosition={
+          props.paginationPosition ? props.paginationPosition : "right"
+        }
         activePage={activePage}
         setActivePage={setActivePage}
       />

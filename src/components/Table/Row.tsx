@@ -1,5 +1,5 @@
 import React from 'react'
-import { Column } from './type'
+import { Column, MinTableItem } from './type'
 import {objectKeys, isPrimitive} from './util'
 
 interface Props<T> {

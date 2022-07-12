@@ -1,5 +1,5 @@
 import React from "react";
-import { Column } from "./type";
+import { Column, MinTableItem } from "./type";
 
 interface Props<T> {
   column: Column<T>;

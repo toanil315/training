@@ -1,3 +1,7 @@
+interface MinTableItem {
+  id: number;
+}
+
 export interface Column<T extends {}> {
     title: string;
     key: string;

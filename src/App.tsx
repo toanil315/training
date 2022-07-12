@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TodoApp from './components/TodoApp/TodoApp';
 import Table from './components/Table/Table';
+import { Column } from './components/Table/type';
+import { Counter } from './components/Counter/Counter';
+import Post from './components/Post/Post';
+import ModalCustom from './components/StyledComponents/Modal/ModalCustom';
+import CustomInput from './components/StyledComponents/Input/CustomInput';
+import Form from './components/StyledComponents/Form/Form';
 
 interface Image {
   url: string;
@@ -312,12 +318,16 @@ function App() {
 
   return (
     <div className="App">
-      <Table
+      {/* <Table
         columns={columns}
         items={stockItems}
         pageSize={8}
         paginationPosition={'center'}
-      />
+      /> */}
+      {/* <Counter /> */}
+      {/* <Post /> */}
+      {/* <CustomInput $error={isError} onChange={handleChange} placeholder='Basic usage' /> */}
+      <Form />
     </div>
   );
 }
