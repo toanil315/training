@@ -1,46 +1,15 @@
 import React from 'react'
-import {FormikConfig, FormikProps, useFormik} from 'formik'
-import * as Yup from 'yup'
+import {FormikProps} from 'formik'
 import styled from 'styled-components'
 import CustomInput from '../Input/CustomInput'
+import { User } from '../../../context/authContext'
 
-interface UserProps {
-    userName: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
+interface Props {
+    formik: FormikProps<User>;
+    loading: boolean;
 }
 
-const SignupSchema = Yup.object().shape({
-    userName: Yup.string().required('*User Name is required!'),
-    email: Yup.string().email('*Email is invalid').required('*Email is required'),
-    password: Yup.string().required('*Password is required!'),
-    confirmPassword: Yup.string().required('*Confirm password is required!').oneOf([Yup.ref('password'), null], '*Confirm passwords must match with password!'),
-  });
-
-export default function Form() {
-    const formik = useFormik<UserProps>({
-        initialValues: {
-            userName: "",
-            email: "",
-            password: "",
-            confirmPassword: "",
-        },
-        validationSchema: SignupSchema,
-        onSubmit: (values, actions) => {
-            console.log(values)
-        }
-    })
-
-    const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        formik.setFieldValue('confirmPassword', e.target.value, false)
-        if(e.target.value !== formik.values.password) {
-            formik.setFieldError('confirmPassword', '*Confirm passwords must match with password!')
-        }
-        else {
-            formik.setFieldError('confirmPassword', undefined)
-        }
-    }
+export default function Form({formik, loading}: Props) {
 
   return (
     <FormContainer>
@@ -51,18 +20,10 @@ export default function Form() {
                 <CustomInput onBlur={formik.handleBlur} touched={formik.touched.userName} value={formik.values.userName} name="userName" onChange={formik.handleChange} error={formik.errors.userName} />
             </div>
             <div>
-                <p>Email:</p>
-                <CustomInput onBlur={formik.handleBlur} touched={formik.touched.email} value={formik.values.email} name="email" onChange={formik.handleChange} error={formik.errors.email} />
-            </div>
-            <div>
                 <p>Password:</p>
                 <CustomInput onBlur={formik.handleBlur} type='password' touched={formik.touched.password} value={formik.values.password} name="password" onChange={formik.handleChange} error={formik.errors.password} />
             </div>
-            <div>
-                <p>Confirm Password:</p>
-                <CustomInput onBlur={formik.handleBlur} type='password' touched={formik.touched.confirmPassword} value={formik.values.confirmPassword} name="confirmPassword" onChange={handleConfirmPasswordChange} error={formik.errors.confirmPassword} />
-            </div>
-            <button type='submit'>Sign Up</button>
+            <button disabled={loading} type='submit'>Login</button>
         </form>
     </FormContainer>
   )
@@ -103,6 +64,10 @@ const FormContainer = styled.div`
             cursor: pointer;
             &:hover {
                 background-color: #30309c;
+            }
+            &:disabled {
+                background-color: #7c7cea;
+                cursor: no-drop;
             }
         }
     }
