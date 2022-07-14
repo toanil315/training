@@ -1,15 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { postApi } from '../services/PostAPI'
-import counterReducer from './slices/CounterSlice'
+import { gameApi } from '../services/GamesServices'
+
 
 export const store = configureStore({
   reducer: {
-    [postApi.reducerPath]: postApi.reducer,
-
-    counter: counterReducer
+    [gameApi.reducerPath]: gameApi.reducer,
   },
   middleware: (getDefaultMiddleware) => (
-    getDefaultMiddleware().concat(postApi.middleware)
+    getDefaultMiddleware().concat(gameApi.middleware)
   )
 })
 
