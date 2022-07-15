@@ -1,51 +1,22 @@
-import React from "react";
-
-export interface Rating {
+export interface WeatherDescription {
     id: number;
-    title: string;
-    count: number;
-    percent: number;
+    main: string;
+    description: string;
+    icon: string;
 }
 
-export interface Genre {
-    "id": number;
+export interface Weather {
+    "dt": number,
+    "temp": number,
+    "humidity": number,
+    "wind_speed": number,
+    "weather": WeatherDescription[],
+}
+
+export interface Location {
     "name": string;
-    "slug": string;
-    "games_count": number;
-    "image_background": string;
-}
-
-export interface Tag {
-    "id": number;
-    "name": string;
-    "slug": string;
-    "language": string;
-    "games_count": number;
-    "image_background": string;
-}
-
-export interface Trailer {
-    "id": number,
-    "name": string,
-    "preview": string,
-    "data": {
-    "480": string,
-    "max": string
-    }
-}
-
-export interface MinGame {
-    "id": number;
-    "slug": strign;
-    "name": string;
-    "released": string;
-    "background_image": string;
-    "added": number;
-    "genres": Genre[];
-    "tags": Tag[];
-    "ratings": Rating[];
-}
-
-export interface GameWithTrailer extends MinGame {
-    trailer?: Trailer
+    "lat": number;
+    "lon": number;
+    "country": string;
+    "state"?: string;
 }

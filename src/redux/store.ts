@@ -1,14 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { gameApi } from '../services/GamesServices'
-
+import { weatherApi } from '../services/weatherServices'
 
 export const store = configureStore({
   reducer: {
-    [gameApi.reducerPath]: gameApi.reducer,
+    [weatherApi.reducerPath]: weatherApi.reducer,
   },
-  middleware: (getDefaultMiddleware) => (
-    getDefaultMiddleware().concat(gameApi.middleware)
-  )
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(weatherApi.middleware)
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

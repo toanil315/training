@@ -1,43 +1,37 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import { ISidebarItem } from '../Sidebar/Sidebar'
+import { Route } from '../Sidebar/Sidebar'
 
 interface Props {
-    sidebarItem: ISidebarItem
+    item: Route
 }
 
-function SidebarItem({sidebarItem} : Props) {
+function SidebarItem({item} : Props) {
   return (
-    <NavLinkContainer>
-        <NavLink to={sidebarItem.link}>
-            {sidebarItem.icon}
-            <span>{sidebarItem.title}</span>
+    <SideBarItemContainer>
+        <NavLink className={({ isActive }) =>
+              isActive ? "active" : ""
+            } to={item.path}>
+            <span>
+                {item.Icon}
+            </span>
         </NavLink>
-    </NavLinkContainer>
+    </SideBarItemContainer>
   )
 }
 
-const NavLinkContainer = styled.div`
-    a {
-        text-decoration: none;
+const SideBarItemContainer = styled.span`
+    & > a {
+        width: 40px;
+        height: 40px;
         display: flex;
+        justify-content: center;
         align-items: center;
-        color: white;
-        transition: all 0.2s ease-in;
-
-        &:hover {
-            color: #bab8b8;
-        }
-
-        i {
-            font-size: 20px;
-        }
-
-        span {
-            font-size: 22px;
-            font-weight: 700;
-            padding-left: 10px;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 20px;
+        &.active {
+            border-bottom: 2px solid white;
         }
     }
 `
