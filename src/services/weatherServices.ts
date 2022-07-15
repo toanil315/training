@@ -1,7 +1,7 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import { Location, Weather } from '../utils/type'
 
-const API_KEY = '2c82966b75d4bbe90db5570eb8b5765e'
+const API_KEY = ''
 
 export interface ResultOfGetWeather {
     current: Weather;
