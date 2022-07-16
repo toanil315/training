@@ -5,7 +5,8 @@ import ForecastSmallItem from '../../components/ForecastSmallItem/ForecastSmallI
 import { useLazyGetLocationQuery, useLazyGetWeatherQuery } from '../../services/weatherServices'
 import { Container } from '../Container'
 import moment from 'moment'
-import { mapOfIconWeather } from '../../utils/common'
+import { getImageLink, mapOfIconWeather } from '../../utils/common'
+import { useAddHistoryMutation, useGetHistoryListQuery, useUpdateHistoryMutation } from '../../services/historyServices'
 
 interface CurrentPosition {
   coords: {
@@ -18,8 +19,12 @@ function Home() {
   const {location} = useParams()
   const [triggerGetLocation, {data: dataLocation}] = useLazyGetLocationQuery();
   const [triggerGetWeather, {data: dataWeather}] = useLazyGetWeatherQuery();
+  const [addHistory] = useAddHistoryMutation()
+  const { data: dataHistory, isLoading, isFetching } = useGetHistoryListQuery();
+  const [updateHistory] = useUpdateHistoryMutation()
 
   useEffect(() => {
+    console.log('render')
     function success(pos: CurrentPosition) {
       const {latitude: lat, longitude: lon} = pos.coords;
       triggerGetWeather({lat, lon}, true);
@@ -29,9 +34,38 @@ function Home() {
       console.warn(`ERROR(${err.code}): ${err.message}`);
     }
 
+    const getWeatherWithLocation = async (location: string) => {
+      const resultLocation = await triggerGetLocation(location, true).unwrap()
+      const resultWeather = await triggerGetWeather({
+        lat: resultLocation[0].lat,
+        lon: resultLocation[0].lon,
+      }, true).unwrap()
+      //after get weather complete => add or update history
+      const existHistory = dataHistory?.find(history => history.location.name === resultLocation[0].name)
+      if(!existHistory) {
+        addHistory({
+          id: Date.now(),
+          location: resultLocation[0],
+          temp: resultWeather.current.temp,
+          description: resultWeather.current.weather[0].description,
+          icon: resultWeather.current.weather[0].icon,
+        })
+      }
+      else {
+        updateHistory(
+          {
+            ...existHistory,
+            temp: resultWeather.current.temp,
+            description: resultWeather.current.weather[0].description,
+            icon: resultWeather.current.weather[0].icon,
+          }
+        )
+      }
+    }
+
     if(location) {
-      //get weather of search country
-      console.log(dataLocation)
+      //get weather with location
+      getWeatherWithLocation(location)
     }
     else {
       //get weather of current location
@@ -40,10 +74,9 @@ function Home() {
         timeout: 5000,
         maximumAge: 0
       };
-      
       navigator.geolocation.getCurrentPosition(success, error, options);
     }
-  }, [])
+  }, [location])
 
   const renderHourlyForecast = () => {
     return dataWeather?.hourly.slice(1, 7).map((weather, index) => {
@@ -53,14 +86,14 @@ function Home() {
 
   return (
     <HomeContainer>
-      <h1 className='title'>{dataLocation ? dataLocation.name : "My Country"}</h1>
+      <h1 className='title'>{location ? (dataLocation && dataLocation[0].name) : "My Country"}</h1>
       <p className='desciption'>{moment(dataWeather?.current.dt ? dataWeather?.current.dt * 1000 : Date.now()).format('MMMM DD, YYYY')}</p>
-      <img src={mapOfIconWeather[dataWeather ? dataWeather?.current.weather[0].icon : '01d']} alt='weather-icon' />
+      <img src={getImageLink(dataWeather?.current.weather[0].icon)} alt='weather-icon' />
       <span>{dataWeather?.current.weather[0].description}</span>
       <ul className='weather-info'>
         <li>
           <span>Temp</span>
-          <p>{dataWeather?.current.temp}°</p>
+          <p>{Math.round(Number(dataWeather?.current.temp))}°</p>
         </li>
         <li>
           <span>Wind</span>

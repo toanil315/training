@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/Home';
-import Detail from './pages/Detail/Detail';
 import MainLayout from './layouts/MainLayout/MainLayout';
 import Search from './pages/Search/Search';
 

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 interface Props {
     imageLink: string;
-    hour: string;
+    hour?: string;
     content: string;
 }
 
@@ -13,14 +13,14 @@ function ForecastSmallItem({imageLink, hour, content}: Props) {
     <SmallItemContainer>
         <img src={imageLink} alt="weather-icon" />
         <div className='content'>
-          <span>{hour}</span>
+          <span>{hour ? hour : ""}</span>
           <p>{content}</p>
         </div>
     </SmallItemContainer>
   )
 }
 
-const SmallItemContainer = styled.li`
+export const SmallItemContainer = styled.li`
     display: flex;
     flex-flow: row nowrap;
     align-items: flex-start;

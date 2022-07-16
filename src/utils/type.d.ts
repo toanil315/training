@@ -18,5 +18,12 @@ export interface Location {
     "lat": number;
     "lon": number;
     "country": string;
-    "state"?: string;
+}
+
+export interface History {
+    id: number;
+    location: Location;
+    temp: number;
+    description: string;
+    icon: string;
 }

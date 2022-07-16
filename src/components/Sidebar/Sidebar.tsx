@@ -55,7 +55,7 @@ const SidebarContainer = styled.div`
   padding: 25px;
   border-top: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 -5px 10px rgba(255, 255, 255, 0.1);
-  background: linear-gradient(90deg, #5936B4 1.95%, #692685 101.56%);
+  background: linear-gradient(90deg, #5837ac 1.95%, #52176b 101.56%);
 
   & > div {
     padding: 0 60px;
