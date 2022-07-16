@@ -4,6 +4,7 @@ export const Container = styled.div`
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    padding: 40px;
     & > .title {
         font-size: 26px;
         font-weight: 500;
