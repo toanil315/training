@@ -25,7 +25,10 @@ function HistoryItem({item} : Props) {
 }
 
 const HistoryItemContainer = styled(SmallItemContainer)`
+    justify-content: flex-start;
+    padding: 10px 15px;
     .content {
+        padding-left: 15px;
         .temp {
             margin-bottom: 0;
             font-size: 14px;

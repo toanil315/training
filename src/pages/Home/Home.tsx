@@ -106,9 +106,13 @@ function Home() {
     });
   };
 
+  console.log('location: ', isLoadingLocation)
+  console.log('weather: ', isLoadingWeather)
+
+
   return (
     <HomeContainer>
-      {isLoadingLocation || isLoadingWeather && (
+      {(isLoadingLocation || isLoadingWeather) && (
         <LoadingContainer>
           <img
             src={LoadingGif}
@@ -188,6 +192,7 @@ const HomeContainer = styled(Container)`
   }
   .hourly-forecast {
     width: 100%;
+    margin-bottom: 80px;
     & > h2 {
       text-align: center;
       font-size: 20px;
@@ -232,7 +237,7 @@ const LoadingContainer = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 
   display: flex;

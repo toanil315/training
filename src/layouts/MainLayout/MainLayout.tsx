@@ -16,7 +16,7 @@ const MainLayoutContainer = styled.div`
     position: relative;
     max-width: 400px;
     margin: 10px auto;
-    min-height: 96vh;
+    max-height: 96vh;
     background: linear-gradient(90deg, #5936B4 0%, #362A84 103.55%);
     border-radius: 60px;
     box-shadow: 2px 2px 10px 5px rgba(89, 54, 180, 0.4);

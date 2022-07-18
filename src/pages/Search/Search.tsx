@@ -13,7 +13,7 @@ function Search() {
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState<string>("");
   const [isError, setIsError] = useState<boolean>(false);
-  const [triggerGetLocation, { data: dataLocation }] =
+  const [triggerGetLocation, { data: dataLocation, isFetching: isFetchingLocation }] =
     useLazyGetLocationQuery();
   const { data: dataHistory, isLoading, isFetching } = useGetHistoryListQuery();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,6 +45,7 @@ function Search() {
       </p>
       <Form onSubmit={handleSubmit}>
         <Input
+          isLoading={isFetchingLocation}
           value={searchValue}
           onChange={handleChange}
           Icon={<i className="fa-solid fa-magnifying-glass"></i>}
@@ -62,7 +63,10 @@ function Search() {
   );
 }
 
-const SearchContainer = styled(Container)``;
+const SearchContainer = styled(Container)`
+
+`;
+
 const ErrorNotify = styled.p`
   font-size: 12px;
   font-weight: 500;
@@ -76,7 +80,7 @@ const HistoryList = styled.ul`
   padding: 0;
   display: flex;
   flex-flow: column nowrap;
-  max-height: 60vh;
+  max-height: 50vh;
   overflow-y: auto;
   padding-bottom: 40px;
 
